@@ -15,26 +15,26 @@ This approach offers several advantages, including the network’s ability to le
 
 ## Network Architecture
 
-[Network Architecture](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/a2300f6e-4d18-46e8-92c8-214ce8fd1f9d)
+![Network Architecture](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/a2300f6e-4d18-46e8-92c8-214ce8fd1f9d)
 
 ## Model Training
 
 The model was trained for 25 epochs with a batch size of 4. Employing the Adam optimizer alongside a learning rate scheduler, adjustments to the learning rate were made every 5 epochs by a factor of 0.1 based on the training’s progress. An initial learning rate of 0.0001 was chosen due to convergence issues with higher values.
 
 The training and test loss plots displayed below illustrate that while the training loss continued to decrease, the test loss reached a plateau, indicating a limitation in further reduction. Initially, the model displayed signs of overfitting, with the test loss increasing. However, this was addressed by introducing dropout layers in the Fully Connected Network (FCN) and fine-tuning the learning rate, resulting in improved performance.
-[Model Training](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/2fc2c306-de98-49b4-bbe4-fd0159da3c03)
+![Model Training](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/2fc2c306-de98-49b4-bbe4-fd0159da3c03)
 
 ## Visualizing Outputs
 
 The illustrations below demonstrate the model’s ability to predict the bounding box of the next frame based on the previous frame cropped around its bounding box and the current frame. The red box denotes the predicted bounding box, while the green box represents the ground truth. Overall, the model’s performance on the test set appears satisfactory considering the constraints of our limited dataset.
 
-[Visualizing Outputs](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/7cd1fcd7-f683-45a8-bb5c-923adac0d808)
+![Visualizing Outputs](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/7cd1fcd7-f683-45a8-bb5c-923adac0d808)
 
 ## Transforming Predictions back to the Original Image
 
 The predictions, initially in the frame of reference of the search region, undergo a multi-step process for normalization. Firstly, they are denormalized relative to the search region. Subsequently, they are rescaled to match the dimensions of the previous image crop. This rescaling is facilitated by tracking the bounding box coordinates of the context region. Finally, they are adjusted by subtracting from the coordinates of the final image dimensions, ensuring alignment within the overall image frame.
 
-[Transforming Back](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/90571013-2747-4145-acb6-3619c5cc8ae4)
+![Transforming Back](https://github.com/raj-anadkat/goturn-tracker/assets/109377585/90571013-2747-4145-acb6-3619c5cc8ae4)
 
 
 ## Conclusion
